@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+private:
+    int empID;
+    string name;
+    float salary;
+    string designation;
+
+public:
+    // Parameterized constructor to initialize employee details
+    Employee(int id, string n, float s, string d) {
+        empID = id;
+        name = n;
+        salary = s;
+        designation = d;
+    }
+
+    // Copy constructor to create a duplicate employee record
+    Employee(const Employee &emp) {
+        empID = emp.empID;
+        name = emp.name;
+        salary = emp.salary;
+        designation = emp.designation;
+    }
+
+    // Function to display employee details
+    void displayDetails() const {
+        cout << "Employee ID: " << empID << endl;
+        cout << "Name: " << name << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Designation: " << designation << endl;
+        cout << "------------------------------" << endl;
+    }
+};
+
+int main() {
+    // Creating multiple employee objects using the parameterized constructor
+    Employee emp1(101, "Alice", 50000.0, "Software Engineer");
+    Employee emp2(102, "Bob", 60000.0, "Project Manager");
+
+    // Creating a copied employee object using the copy constructor
+    Employee emp3 = emp1;
+
+    // Displaying the details of the employees
+    cout << "Employee 1 Details:" << endl;
+    emp1.displayDetails();
+
+    cout << "Employee 2 Details:" << endl;
+    emp2.displayDetails();
+
+    cout << "Copied Employee Details (Employee 3):" << endl;
+    emp3.displayDetails();
+
+    return 0;
