@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    int bookID;
+    string title;
+    string author;
+    float price;
+
+public:
+    // Default constructor
+    Book() {
+        bookID = 0;
+        title = "Unknown";
+        author = "Unknown";
+        price = 0.0;
+    }
+
+    // Parameterized constructor
+    Book(int id, string t, string a, float p) {
+        bookID = id;
+        title = t;
+        author = a;
+        price = p;
+    }
+
+    // Function to display book information
+    void displayBookInfo() const {
+        cout << "Book ID: " << bookID << endl;
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Price: $" << price << endl;
+        cout << "---------------------------" << endl;
+    }
+};
+
+int main() {
+    // Creating book objects
+    Book book1; // Default constructor
+    Book book2(101, "1984", "George Orwell", 9.99); // Parameterized constructor
+    Book book3(102, "To Kill a Mockingbird", "Harper Lee", 12.50);
+
+    // Displaying book information
+    cout << "Book 1 Info:" << endl;
+    book1.displayBookInfo();
+
+    cout << "Book 2 Info:" << endl;
+    book2.displayBookInfo();
+
+    cout << "Book 3 Info:" << endl;
+    book3.displayBookInfo();
+
+    return 0;
+}
+
+Output:
+
+Book 1 Info:
+Book ID: 0
+Title: Unknown
+Author: Unknown
+Price: $0
+
+Book 2 Info:
+Book ID: 101
+Title: 1984
+Author: George Orwell
+Price: $9.99
+
+Book 3 Info:
+Book ID: 102
+Title: To Kill a Mockingbird
+Author: Harper Lee
+Price: $12.5
