@@ -1,0 +1,118 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class MovieTicket {
+private:
+    string movieName;
+    int seatNumber;
+    float price;
+    bool isBooked;
+
+public:
+    // Constructor to initialize ticket details
+    MovieTicket(string name, int seat, float p) {
+        movieName = name;
+        seatNumber = seat;
+        price = p;
+        isBooked = false;
+    }
+
+    // Function to book a ticket
+    void bookTicket() {
+        if (!isBooked) {
+            isBooked = true;
+            cout << "Ticket for seat " << seatNumber << " booked successfully!" << endl;
+        } else {
+            cout << "Seat " << seatNumber << " is already booked!" << endl;
+        }
+    }
+
+    // Function to cancel a ticket
+    void cancelTicket() {
+        if (isBooked) {
+            isBooked = false;
+            cout << "Ticket for seat " << seatNumber << " has been cancelled." << endl;
+        } else {
+            cout << "Ticket for seat " << seatNumber << " is not booked yet!" << endl;
+        }
+    }
+
+    // Function to display ticket details
+    void displayTicketDetails() const {
+        cout << "Movie: " << movieName << endl;
+        cout << "Seat Number: " << seatNumber << endl;
+        cout << "Price: $" << price << endl;
+        cout << "Status: " << (isBooked ? "Booked" : "Available") << endl;
+        cout << "-----------------------------" << endl;
+    }
+
+    // Destructor
+    ~MovieTicket() {
+        cout << "Ticket object for seat " << seatNumber << " is removed from memory." << endl;
+    }
+};
+
+int main() {
+    // Create multiple ticket objects
+    MovieTicket t1("Inception", 1, 10.0);
+    MovieTicket t2("Inception", 2, 10.0);
+    MovieTicket t3("Inception", 3, 10.0);
+
+    // Display initial details
+    t1.displayTicketDetails();
+    t2.displayTicketDetails();
+    t3.displayTicketDetails();
+
+    // Booking tickets
+    t1.bookTicket();
+    t2.bookTicket();
+    t2.bookTicket(); // Try booking again to test the condition
+
+    // Display after booking
+    t1.displayTicketDetails();
+    t2.displayTicketDetails();
+
+    // Cancel a ticket
+    t2.cancelTicket();
+    t2.cancelTicket(); // Try canceling again
+
+    // Final display
+    t2.displayTicketDetails();
+    t3.displayTicketDetails();
+
+    return 0;
+}
+
+Sample Output:
+
+Movie: Inception
+Seat Number: 1
+Price: $10
+Status: Available
+-----------------------------
+Movie: Inception
+Seat Number: 2
+Price: $10
+Status: Available
+-----------------------------
+Movie: Inception
+Seat Number: 3
+Price: $10
+Status: Available
+-----------------------------
+Ticket for seat 1 booked successfully!
+Ticket for seat 2 booked successfully!
+Seat 2 is already booked!
+Movie: Inception
+Seat Number: 1
+Price: $10
+Status: Booked
+-----------------------------
+Movie: Inception
+Seat Number: 2
+Price: $10
+Status: Booked
+-----------------------------
+Ticket for seat 2 has been cancelled.
+Ticket for seat 2 is
