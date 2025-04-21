@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Product {
+private:
+    int productID;
+    string productName;
+    float price;
+    int quantity;
+
+public:
+    // Default constructor
+    Product() {
+        productID = 0;
+        productName = "Unknown";
+        price = 0.0;
+        quantity = 0;
+    }
+
+    // Parameterized constructor
+    Product(int id, string name, float p, int qty) {
+        productID = id;
+        productName = name;
+        price = p;
+        quantity = qty;
+    }
+
+    // Function to calculate total price
+    float calculateTotalPrice() const {
+        return price * quantity;
+    }
+
+    // Function to display product details
+    void displayProduct() const {
+        cout << "Product ID: " << productID << endl;
+        cout << "Product Name: " << productName << endl;
+        cout << "Price: $" << price << endl;
+        cout << "Quantity: " << quantity << endl;
+        cout << "Total Cost: $" << calculateTotalPrice() << endl;
+        cout << "----------------------------" << endl;
+    }
+
+    // Destructor
+    ~Product() {
+        cout << "Product \"" << productName << "\" with ID " << productID << " is removed from memory." << endl;
+    }
+};
+
+// Function to display all products in the cart
+void displayCart(Product cart[], int size) {
+    cout << "Cart Details:" << endl;
+    for (int i = 0; i < size; i++) {
+        cart[i].displayProduct();
+    }
+}
+
+int main() {
+    // Create an array of Product objects using parameterized constructor
+    Product cart[3] = {
+        Product(101, "Laptop", 999.99, 1),
+        Product(102, "Headphones", 49.99, 2),
+        Product(103, "Mouse", 25.50, 1)
+    };
+
+    // Display all products in the cart
+    displayCart(cart, 3);
+
+    return 0;
+}
+
+Sample Output:
+
+Cart Details:
+Product ID: 101
+Product Name: Laptop
+Price: $999.99
+Quantity: 1
+Total Cost: $999.99
+----------------------------
+Product ID: 102
+Product Name: Headphones
+Price: $49.99
+Quantity: 2
+Total Cost: $99.98
+----------------------------
+Product ID: 103
+Product Name: Mouse
+Price: $25.5
+Quantity: 1
+Total Cost: $25.5
+----------------------------
+Product "Mouse" with ID 103 is removed from memory.
+Product "Headphones" with ID 102 is removed from memory.
+Product "Laptop" with ID 101 is removed from memory.
